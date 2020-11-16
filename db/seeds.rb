@@ -1,12 +1,10 @@
+
 10.times do |i|
-  Game.create(game_name: "Game - #{i}")
-end
-
-
-20.times do |i|
-  Level.create(game_level: i)
+  level = Level.create(game_level: i)
 end
 
 10.times do |i|
-  GameLevel.create(priority: i+100)
+  level = Level.create(game_level: i)
+  game = Game.create!(game_name: "Game - #{i}")
+  game_level = GameLevel.create!(:level_id => level.id , :game_id => game.id  , :priority => i)
 end
