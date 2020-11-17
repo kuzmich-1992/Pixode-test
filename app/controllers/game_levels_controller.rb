@@ -1,8 +1,7 @@
 class GameLevelsController < ActionController::API
   def index 
-  	@game_levels = GameLevel.last
+  	@game_level = GameLevel.all
 
-    render json: @game_levels
-
-  end 
+  	render json: @game_level, fields: [:game_name, :game_level, :priority], adapter: :json
+  end
 end
